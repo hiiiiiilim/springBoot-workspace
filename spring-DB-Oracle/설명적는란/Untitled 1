@@ -1,5 +1,11 @@
 @SpringBootApplication
 	애플리케이션을 시작할 때 @SpringBootApplication이 있는 클래스부터 설정을 읽어오고 자동으로 구성
+	@MapperScan 
+		MyBatis 매퍼 인터페이스를 찾아서 MyBatis와 연동하는데 사용
+		MyBatis sql 매퍼 파일 이외에도 데이터베이스와 연동할 수 있게 도와주는 것
+	@ComponentScan
+		스프링 컨테이너가 어디서 빈을 찾아야하는지를 지정하는데 사용
+		예) @ComponentScan(basePackage = "패키지(com...)")
 
 @Component 재사용이 가능한 각각의 독립된 조작장치
 
