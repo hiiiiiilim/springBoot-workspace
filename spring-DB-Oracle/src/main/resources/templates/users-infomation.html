@@ -16,11 +16,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="u:${users}">
-				<td:th:text="${u.mno}"></td>
-				<td:th:text="${u.mname}"></td>
-				<td:th:text="${u.memail}"></td>
-				<td:th:text="${u.mbirth}"></td>
+			<tr th:each="u : ${users}">
+				<td th:text="${u.mno}"></td>
+				<td th:text="${u.mname}"></td>
+				<td th:text="${u.memail}"></td>
+				<td th:text="${u.mbirth}"></td>
 			</tr>
 		</tbody>
 		

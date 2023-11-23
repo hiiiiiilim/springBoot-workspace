@@ -1,5 +1,6 @@
 @charset "EUC-KR";
 
-table{
+body{
 	background-color: aqua;
+	color: #333;
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>아이디 하나만 가지고오기</title>
+</head>
+<body>
+	<h1>user info</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>name</th>
+				<th>email</th>
+				<th>birth</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${user}">
+				<td th:text="${user.mno}"></td>
+				<td th:text="${user.mname}"></td>
+				<td th:text="${user.memail}"></td>
+				<td th:text="${user.mbirth}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

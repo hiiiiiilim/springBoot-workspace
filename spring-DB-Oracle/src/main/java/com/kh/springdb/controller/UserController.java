@@ -17,7 +17,7 @@ public class UserController {
 	private UserService userSerive;
 	
 	//전체아이디를 가지고 오기 위해서 Getmapping을 사용
-	@GetMapping("/users")
+	@GetMapping("/users-infomation")
 	public String getAllUsers(Model model){
 		List<User> users = userSerive.getAllUsers();
 		model.addAttribute("users",users);
@@ -25,7 +25,7 @@ public class UserController {
 	}
 	
 	//하나의 아이디 가지고오기
-	@GetMapping("/users/{id}")
+	@GetMapping("/user-info/{id}")
 	public String getUserById(@PathVariable int id, Model model) {
 		User user = userSerive.getUserById(id);
 		model.addAttribute("user", user);
