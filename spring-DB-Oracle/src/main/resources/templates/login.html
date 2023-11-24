@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>login</title>
+</head>
+<body>
+	<!--
+		login mname 로그인하기
+	-->
+	<form action="@{/login}" method="post" th:object="${loginForm}">
+		<label for="id">id : </label>
+		<input type="email" id="id" name="id" required>
+		<label for="password">pw: </label>
+		<input type="password" id="pw" name="pw" required>	
+		<input type="submit" value="로그인">	
+	</form>
+
+</body>
+</html>

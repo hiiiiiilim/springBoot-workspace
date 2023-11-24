@@ -2,11 +2,14 @@ package com.kh.springdb.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class User {
 	private int mno;
 	private String mname;
 	private String memail;
-	private Date mbirth;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date mbirth = new Date();
 	
 	public int getMno() {
 		return mno;

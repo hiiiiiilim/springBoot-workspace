@@ -22,4 +22,14 @@ public class UserService {
 	public User getUserById(int id) {
 		return userMapper.getUserById(id);
 	}
+	
+	//한명의 회원정보 db에 저장하기
+	public void registerUser(User user) {
+		userMapper.insertUser(user);
+	}
+	
+	//로그인할 정보 가져오기
+	public User getLoginInfo(String memail, String mno) {
+		return userMapper.getLoginInfo(memail, mno);
+	}
 }

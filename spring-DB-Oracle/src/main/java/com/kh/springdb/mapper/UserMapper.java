@@ -12,4 +12,8 @@ public interface UserMapper {
 	List<User> getAllUsers();
 	//한 유저 조회
 	User getUserById(int id);
+	//값을 반환하지 않고 넣어서 void
+	void insertUser(User user);
+	//로그인할 유저 조회
+	User getLoginInfo(String memail, String mno);
 }

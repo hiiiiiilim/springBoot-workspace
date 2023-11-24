@@ -8,7 +8,23 @@
 	</select>
 	
 	<!-- 아이디 1개 조회 -->
-	<select id="getUserById" parameterType="int" resultType="com.kh.springdb.model.User">
-		SELECT * FROM memberinfo WHERE mno = #{id}
+	<select id="getUserById" parameterType="int" resultType="com.kh.springdb.model.User"> <!-- 값이 하나여서 parameterType을 지정해줌 -->
+		SELECT * FROM memberinfo WHERE mno = #{mno}
 	</select>
+	
+	<!-- 회원가입 하기 위한 insert부분 -->
+	<insert id="insertUser" parameterType="com.kh.springdb.model.User" > <!-- 값이 많고 맞춰서 집어넣기 위해서 -->
+		INSERT INTO memberinfo (MNO, MNAME, MEMAIL, MBIRTH)
+		VALUES (#{mno}, #{mname}, #{memail}, #{mbirth})
+	</insert>
+	
+	<!-- 로그인을 위한 select -->
+	<select id="selectUser" parameterType="com.kh.springdb.model.User">
+		SELECT memail, mno FROM memberinfo 
+	</select>
+	
+	<!-- insert -->
+	<insert id="insertBoard" parameterType="com.kh.springdb.model.User">
+		
+	</insert>
 </mapper>
