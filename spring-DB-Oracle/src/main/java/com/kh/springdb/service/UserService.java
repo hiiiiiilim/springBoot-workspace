@@ -28,8 +28,14 @@ public class UserService {
 		userMapper.insertUser(user);
 	}
 	
-	//로그인할 정보 가져오기
-	public User getLoginInfo(String memail, String mno) {
-		return userMapper.getLoginInfo(memail, mno);
+	//회원의 정보 수정해서 DB에 저장하기
+	public void updateUser(User user) {
+		userMapper.updateUser(user);
 	}
+	
+	//회원정보 db에서 삭제하기
+	public void deleteUser(int mno) {
+		userMapper.deleteUser(mno);
+	}
+	
 }

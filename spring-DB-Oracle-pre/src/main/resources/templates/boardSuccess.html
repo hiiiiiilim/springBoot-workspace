@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>찾기 성공!</title>
+</head>
+<body>
+<script th:if="${boardSuccess}">
+		alert("찾기가 완료되었습니다.");
+	</script>
+	<h2>찾기에 성공하셨습니다.</h2>
+	<a th:href="@{/}"><button>홈페이지로 돌아가기</button></a>
+</body>
+</html>

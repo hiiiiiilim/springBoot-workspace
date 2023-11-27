@@ -23,8 +23,14 @@
 		SELECT memail, mno FROM memberinfo 
 	</select>
 	
-	<!-- insert -->
-	<insert id="insertBoard" parameterType="com.kh.springdb.model.User">
-		
-	</insert>
+	<!-- 정보수정을 위한 -->
+	<update id="updateUser" parameterType="com.kh.springdb.model.User">
+		UPDATE memberinfo SET mname = #{mname} , memail=#{memail}
+		WHERE mno = #{mno}
+	</update>
+	
+	<!-- 정보 삭제를 위한 delete-->
+	<delete id="deleteUser" parameterType="int">
+		DELETE FROM memberinfo WHERE mno = #{mno}
+	</delete>
 </mapper>

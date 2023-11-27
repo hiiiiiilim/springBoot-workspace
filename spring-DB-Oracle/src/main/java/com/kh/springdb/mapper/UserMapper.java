@@ -14,6 +14,9 @@ public interface UserMapper {
 	User getUserById(int id);
 	//값을 반환하지 않고 넣어서 void
 	void insertUser(User user);
-	//로그인할 유저 조회
-	User getLoginInfo(String memail, String mno);
+	//유저 정보수정 메서드
+	void updateUser(User user);
+	//유저 정보 삭제 메서드
+	void deleteUser(int mno);
+	
 }

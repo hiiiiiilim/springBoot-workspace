@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>Board Search</title>
+</head>
+<body>
+	<form th:action="@{boardSearch}" method="post">
+		<label for="board_id">board_id : </label>
+		<input type="number" id="board_id" name="board_id" required>
+		<br>
+		<label for="title">title : </label>
+		<input type="text" id="title" name="title" required>
+		<button type="submit">찾기</button>
+	</form>	
+	
+	<p th:if="${error}" style="color: red;" th:text="${error}"></p>
+</body>
+</html>

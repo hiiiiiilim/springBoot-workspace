@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="EUC-KR">
 <title>login</title>
@@ -8,13 +8,16 @@
 	<!--
 		login mname 로그인하기
 	-->
-	<form action="@{/login}" method="post" th:object="${loginForm}">
-		<label for="id">id : </label>
-		<input type="email" id="id" name="id" required>
-		<label for="password">pw: </label>
-		<input type="password" id="pw" name="pw" required>	
-		<input type="submit" value="로그인">	
+	<form action="/user/login" method="post">
+		<label for="mname">USER NAME :  </label>
+		<input type="text" id="mname" name="mname" required>
+		<br>
+		<label for="memail">USER EMAIL : </label>
+		<input type="text" id="memail" name="memail" required>	
+		<button type="submit">로그인</button>	
 	</form>
-
+	
+	<!--로그인 실패문구를 보여주기 위해 사용하는 것-->
+	<p th:if="${error}" style="color: red;" th:text="${error}"> </p>
 </body>
 </html>
