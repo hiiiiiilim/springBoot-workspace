@@ -60,18 +60,19 @@ public class BoardController {
 		return "board_form";
 	}
 	
-	@PostMapping("/update/{boardId}")
-	public String updateForm(@PathVariable Long boardId, @ModelAttribute Board board) {
-		boardService.getBoardById(boardId);
-		boardService.saveBoard(board);
+		
+	//삭제
+	@GetMapping("/delete/{boardId}")
+	public String deleteBoard(@PathVariable Long boardId) {
+		boardService.deleteBoardById(boardId);
 		return "redirect:/boards";
 	}
 	
-	//삭제
-	@GetMapping("/delete/{id}")
-	public String deleteBoard(@PathVariable Long id) {
-		boardService.deleteBoardById(id);
-		return "redirect:/boards";
+	//모든 게시물 삭제
+	@GetMapping("/delete/all")
+	public String deleteAllBoards() {
+		boardService.deleteAllBoards();
+		return "redirect:/boards";	
 	}
 	
 }

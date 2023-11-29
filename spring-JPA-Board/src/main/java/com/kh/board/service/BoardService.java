@@ -33,8 +33,13 @@ public class BoardService {
 		return boardRepository.save(board);
 	}
 	
+	//게시물 삭제하기
 	public void deleteBoardById(Long id) {
 		boardRepository.deleteById(id);
 	}
 	
+	//게시물 모두 삭제하기
+	public void deleteAllBoards() {
+		boardRepository.deleteAll();
+	}
 }
