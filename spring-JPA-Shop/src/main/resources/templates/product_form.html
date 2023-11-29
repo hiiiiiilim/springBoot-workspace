@@ -9,8 +9,6 @@
 <body>
 	<h2>제품 추가 폼 작성</h2>
 	<form  th:action="${product_id != null ? '/products' + product_id: '/products/save'}" method="post" th:object="${product}">
-		
-
 		 <label>ID: </label><span th:text="${product_id}"></span><br/>
 		<input type="hidden" th:field="*{product_id}"/>
 		

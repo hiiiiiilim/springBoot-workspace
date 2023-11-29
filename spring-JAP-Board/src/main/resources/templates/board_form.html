@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="EUC-KR">
+<title>게시글 추가하기</title>
+</head>
+<body>
+	<h2>게시글 추가 폼</h2>
+	<form th:action="${boardId != null ? '/boards/update' + boardId: '/boards/save'}" method="post" th:object="${board}">
+	<!--<label>ID: </label><span th:text="${boardId}"></span><br/>-->
+		<input type="hidden" th:field="*{boardId}"/>
+		
+		<lable for="title">title :</lable>
+		<input type="text" th:field="*{title}"><br/>
+		
+		<lable for="content">content :</lable>
+		<input type="text" th:field="*{content}"><br/>
+		
+		<lable for="author">author : </lable>
+		<input type="text" th:field="*{author}"><br/>
+		
+		<button type="submit">저장하기</button>
+	</form>
+	<a th:href="@{/boards}">돌아가기</a>
+</body>
+</html>
