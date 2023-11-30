@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>검색 결과</title>
+</head>
+<body>
+	<h2>검색 결과</h2>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>title</th>
+				<th>location</th>
+				<th>openingHours</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each = "cafe : ${cafes}">
+				<td th:text="${cafe.cafeId}"></td>
+				<td th:text="${cafe.name}"></td>
+				<td th:text="${cafe.location}"></td>
+				<td th:text="${cafe.openingHours}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<a th:href="@{/cafes}">Back to List</a>
+</body>
+</html>

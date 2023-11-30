@@ -29,6 +29,14 @@ public class CafeController {
 	
 	@GetMapping
 	public String getAllCafes(Model model) {
+		//카페 리스트를 만들어준 후 만약에 리스트에서 카페가 존재한다면 그 카페 목록들만 보여주고
+		//만약에 존재하지 않는다면 그냥 모든 카페 내용을 보여주겠다.
+		List<Cafe> cafes;
+		if() {
+			
+		}else {
+			
+		}
 		model.addAttribute("cafes",cafeService.getAllCafes());
 		return "cafeList";
 	}
@@ -58,14 +66,14 @@ public class CafeController {
 		return "redirect:/cafes";
 	}
 	
-	@GetMapping("/search")
-	public String searchCafes(@RequestParam String keyword, Model model) {
-		//특정 키워들을 포함하는 카페를 검색
-		List<Cafe> cafes = cafeService.findCafes(keyword);
-		//모델의 검색결과 추가
-		model.addAttribute("cafes", cafes);
-		
-		//검색결과를 보여줄 뷰페이지 작성
-		return "searchResults";
-	}
+//	@GetMapping("/search")
+//	public String searchCafes(@RequestParam String keyword, Model model) {
+//		//특정 키워들을 포함하는 카페를 검색
+//		List<Cafe> cafes = cafeService.findCafes(keyword);
+//		//모델의 검색결과 추가
+//		model.addAttribute("cafes", cafes);
+//		
+//		//검색결과를 보여줄 뷰페이지 작성
+//		return "searchResults";
+//	}
 }

@@ -33,6 +33,7 @@ public class CafeService {
 	
 	//부분검색
 	public List<Cafe> findCafes(String keyword){
-		return cafeReporsitory.findCafe(keyword);
+		//return cafeReporsitory.findCafe(keyword);
+		return cafeReporsitory.findByNameContaining(keyword);
 	}
 }
