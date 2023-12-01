@@ -1,14 +1,19 @@
 package com.kh.spring.shop.service;
 
+import com.kh.spring.shop.repository.OrderRepository;
+import com.kh.spring.shop.repository.PaymentRepository;
 import com.kh.spring.shop.repository.ProductRepository;
 import com.kh.spring.shop.vo.Cart;
 import com.kh.spring.shop.vo.Order;
+import com.kh.spring.shop.vo.Payment;
 import com.kh.spring.shop.vo.Product;
 
 public class ShopService {
 	//최종적으로 만들어준 order cart정보를 가지고 결제를 하거나 장바구니에 상품을 추가해서 주문을 생성해주는 메서드
 	public Cart cart = new Cart();
-	public ProductRepository productRepository;
+	private ProductRepository productRepository;
+	private PaymentRepository paymentRepository;
+	private OrderRepository orderRepository;
 	public Order placeOrder(Product product, int quantity) {
 		//장바구니에 상품 추가
 		cart.addToCart(product, quantity);
@@ -31,16 +36,20 @@ public class ShopService {
 	
 	//주문한 정보를 조회하는 메서드
 	public Order getOrderById(Long orderId) {
-		Order order = new Order();
-		order.setId(orderId);
-		order.setProduct(getProductById(orderId));
 		//주문한 수량 추가
-		return order;
+		return orderRepository.findById(orderId).orElse(null);
 	}
 	//상품 정보 조회 메서드
 	public Product getProductById(Long productId) {
-		return productRepository.getProductById(productId);
+		return productRepository.findById(productId).orElse(null);
 	}
 	
 	//결제처리 메서드
+	private Payment savePayment(Order order, String payment) {
+		//결제에 대한 처리
+		Payment payments = new Payment();
+		payments.setOrder(order);
+		payments.setPaymentStatus(payment);
+		return payments;
+	}
 }
