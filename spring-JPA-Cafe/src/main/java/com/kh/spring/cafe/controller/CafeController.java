@@ -28,18 +28,23 @@ public class CafeController {
 	}
 	
 	@GetMapping
-	public String getAllCafes(Model model) {
+	public String getAllCafes(Model model, @RequestParam(required = false) String name) {
 		//카페 리스트를 만들어준 후 만약에 리스트에서 카페가 존재한다면 그 카페 목록들만 보여주고
 		//만약에 존재하지 않는다면 그냥 모든 카페 내용을 보여주겠다.
 		List<Cafe> cafes;
-		if() {
+		if(name != null && !name.isEmpty()) { /*/*만약에 카페이름 값이 빈 값이 아니거나 null값이 아니라면) {
+				-> 사람들이 검색한 카페 내용을 service에서 가져와서 뿌린다음에
+				cafes에 넣어버리겠다.*/
+			cafes = cafeService.searchCafes(name);
 			
-		}else {
-			
+		}else {/*모든 카페리스트를 보여주겠다.*/
+			  cafes = cafeService.getAllCafes();
 		}
-		model.addAttribute("cafes",cafeService.getAllCafes());
+		model.addAttribute("cafes", cafes);
 		return "cafeList";
 	}
+
+	
 	
 	@GetMapping("/new")
 	public String showCafeFrom(Model model) {
@@ -47,7 +52,7 @@ public class CafeController {
 		return "cafeForm";
 	}
 	
-	@PostMapping
+	@PostMapping("/save")
 	public String saveCafe(@ModelAttribute Cafe cafe) {
 		cafeService.saveCafe(cafe);
 		return "redirect:/cafes";
@@ -76,4 +81,14 @@ public class CafeController {
 //		//검색결과를 보여줄 뷰페이지 작성
 //		return "searchResults";
 //	}
+	
+	//GetMapping을 활용해서 count해준 location을 가지고 오기
+	@GetMapping("/count/{location}")
+	public String countCafeByLocation(@PathVariable String location, Model model) {
+		Long cafeCount = cafeService.countCafeByLocation(location);
+		// 1. 지역값을 저장할 모델 2. 지역 갯수를 저장해줄 모델이 필요
+		model.addAttribute("location",location);
+		model.addAttribute("cafeCount", cafeCount);
+		return "cafeCount";
+	}
 }

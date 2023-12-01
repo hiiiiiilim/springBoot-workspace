@@ -7,13 +7,13 @@
 	<body>
 		<table border="1">
 		<div th:if="${cafe != null}">
-			<p>Id</p>
+			<p>Id:</p>
 			<p th:text="${cafe.cafeId}"></p>
-			<p>name</p>
+			<p>name:</p>
 			<p th:text="${cafe.name}"></p>
-			<p>location</p>
+			<p>location:</p>
 			<p th:text="${cafe.location}"></p>
-			<p>opening Hours</p>
+			<p>opening Hours:</p>
 			<p th:text="${cafe.openingHours}"></p>
 			<a th:href="@{/cafes}">Back to List</a>
 		</div>

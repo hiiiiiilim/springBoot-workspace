@@ -32,8 +32,13 @@ public class CafeService {
 	}
 	
 	//부분검색
-	public List<Cafe> findCafes(String keyword){
+	public List<Cafe> searchCafes(String keyword){
 		//return cafeReporsitory.findCafe(keyword);
 		return cafeReporsitory.findByNameContaining(keyword);
+	}
+	
+	//repository에 작성한 지역 카운터를 가져와서 이용할 수 있는 메서드를 추가
+	public Long countCafeByLocation(String location) {
+		return cafeReporsitory.countByLocation(location);
 	}
 }
