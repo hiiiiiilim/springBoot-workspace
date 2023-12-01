@@ -44,7 +44,13 @@ public class CafeController {
 		return "cafeList";
 	}
 
-	
+	@GetMapping("/{id}")
+    public String getCafeById(@PathVariable Long id, Model model) {
+	  Optional<Cafe> cafe = cafeService.getCafeById(id);
+	  cafe.ifPresent(value -> model.addAttribute("cafe", value));
+      //model.addAttribute("cafe", cafe);
+      return "cafeDetail";
+    }
 	
 	@GetMapping("/new")
 	public String showCafeFrom(Model model) {
@@ -83,12 +89,20 @@ public class CafeController {
 //	}
 	
 	//GetMapping을 활용해서 count해준 location을 가지고 오기
-	@GetMapping("/count/{location}")
-	public String countCafeByLocation(@PathVariable String location, Model model) {
+	@GetMapping("/count")
+	public String countCafeByLocation(@RequestParam String location, Model model) {
 		Long cafeCount = cafeService.countCafeByLocation(location);
 		// 1. 지역값을 저장할 모델 2. 지역 갯수를 저장해줄 모델이 필요
 		model.addAttribute("location",location);
 		model.addAttribute("cafeCount", cafeCount);
 		return "cafeCount";
 	}
+	
+	//카페가 존재하는지 확인여부
+    @GetMapping("/exists/{name}")
+    public String existsCafeByName(@PathVariable String name, Model model) {
+    	boolean cafeExists = cafeService.existsCafeByName(name);
+    	model.addAttribute("cafeExists", cafeExists);
+    	return "cafeExists";
+    }
 }

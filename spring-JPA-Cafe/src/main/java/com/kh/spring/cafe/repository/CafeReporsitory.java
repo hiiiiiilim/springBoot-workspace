@@ -9,6 +9,9 @@ import org.springframework.data.repository.query.Param;
 import com.kh.spring.cafe.vo.Cafe;
 
 public interface CafeReporsitory extends JpaRepository<Cafe, Long> {
+	//카페가 존재하는지 존재여부(boolean)
+	boolean existsByName(String name);
+	
 	//count를 이용해서 지역의 갯수가 몇 개인지 찾아보는 메서드
 	Long countByLocation(String location);
 	

@@ -1,4 +1,4 @@
-package com.kh.springdb.controller;
+package com.kh.spring.shop.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.kh.springdb.service.ProductService;
-import com.kh.springdb.vo.Product;
+import com.kh.spring.shop.service.ProductService;
+import com.kh.spring.shop.vo.Product;
 
 @Controller
 @RequestMapping("/products")
@@ -68,4 +68,5 @@ public class ProductController {
 		productService.deleteProductById(id);
 		return "redirect:/products";
 	}
+
 }

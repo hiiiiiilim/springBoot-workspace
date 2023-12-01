@@ -1,0 +1,5 @@
+com\kh\board\SpringJapBoardApplication.class
+com\kh\board\service\BoardService.class
+com\kh\board\controller\BoardController.class
+com\kh\board\repository\BoardRepository.class
+com\kh\board\vo\Board.class

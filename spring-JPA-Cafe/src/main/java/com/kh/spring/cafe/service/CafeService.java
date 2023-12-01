@@ -41,4 +41,9 @@ public class CafeService {
 	public Long countCafeByLocation(String location) {
 		return cafeReporsitory.countByLocation(location);
 	}
+	
+	//카페가 존재하는지 존재여부
+	public boolean existsCafeByName(String name) {
+    	return cafeReporsitory.existsByName(name);
+    }
 }
