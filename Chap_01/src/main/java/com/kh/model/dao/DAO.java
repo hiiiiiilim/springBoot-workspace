@@ -17,6 +17,7 @@ public class DAO {
 	
 	//사용자가 있는지 확인하기 위해 전체 사용자를 조회하는 sql문을 작성
 	//1. 사용자가 있는지 확인하기 위해 전체 사용자를 조회하는 sql문
+	//1. 사용자가 있는지 확인하기 위해 전체 사용자를 조회하는 sql문
 	public static List<DTO> selectAllUsers() throws SQLException {
 		// 1-1 커넥션 연결하기 위한 getConnection()
 		Connection conn = JDBCTemplate.getConnection();
@@ -42,6 +43,26 @@ public class DAO {
 		return userList;
 	}
 	
-	//2.내가 검색한 사용자가 있느닞 확인하기 위해 입력한 사용자를 조회하는 sql문
-	//public static List<DTO> selectUserById(Sting user)
+	//2.내가 검색한 사용자가 있는지 확인하기 위해 입력한 사용자를 조회하는 sql문
+	public static List<DTO> selectUserById(String userId) throws SQLException{
+		Connection conn = JDBCTemplate.getConnection();
+		
+		List<DTO> userList = new ArrayList<>();
+		
+		String sql = "select * from test_user where user_id =?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setString(1, userId);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		if(rs.next()) {
+			DTO user = new DTO();
+			user.setUser_number(rs.getInt("USER_NUMBER"));
+			user.setUser_id(rs.getString("USER_ID"));
+			user.setUser_name(rs.getString("USER_NAME"));
+			user.setUser_age(rs.getInt("USER_AGE"));
+			userList.add(user);
+		}
+		return userList;
+	}
 }

@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
  <%
- 	List<DTO> userList = (List<DTO>) request.getAttribute("user_name");
+ 	List<DTO> userList = (List<DTO>) request.getAttribute("userList");
  %>
 <!DOCTYPE html>
 <html>
@@ -24,6 +24,7 @@
 		</thead>
 		<tbody>
 			<%
+				//조회된 사용자 정보를 전체 출력
 				for(DTO user : userList){
 			%>
 				<tr>
@@ -32,9 +33,7 @@
 					<td><%=user.getUser_name() %></td>
 					<td><%=user.getUser_age() %></td>
 				</tr>
-			<%		
-				}
-			%>
+			<% } %>
 		</tbody>
 	</table>
 </body>

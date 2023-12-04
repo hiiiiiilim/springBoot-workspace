@@ -23,8 +23,12 @@ public class UserServlet extends HttpServlet {
 		// 사용자로부터 입력받은 데이터 처리 및 DAO 호출 작업을 수행
  		List<DTO> userList;
 		try {
-	 		//2.값이 일치할 경우 
-			userList = DAO.selectAllUsers();
+			//전체조회 : userList = DAO.selectAllUsers();
+	 		
+			//아이디 1개 조회: 
+			String userId = request.getParameter("userId");
+			userList = DAO.selectUserById(userId);
+			
 			//1.만약에 비어있지 않거나 null값이 아닐 때는 전제조회
 	 		if(userList != null && !userList.isEmpty()) {
 	 			request.setAttribute("userList", userList);
