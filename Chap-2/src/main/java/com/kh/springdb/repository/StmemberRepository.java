@@ -1,5 +1,9 @@
 package com.kh.springdb.repository;
 
-public class StmemberRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.kh.springdb.vo.STMEMBER;
+
+public interface StmemberRepository extends JpaRepository<STMEMBER, Long> {
+	
 }

@@ -17,7 +17,7 @@ public class STMEMBER {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "st_seq")
 	@SequenceGenerator(name="st_seq", sequenceName = "st_seq", allocationSize = 1)
-	private int STNumber;
+	private Long STNumber;
 	private String memberName;
 	private int koreanScore;
 	private int englishScore;
