@@ -35,8 +35,8 @@ public class Item {
 	//상품을 판매하는 판매자가 여러명일 수 
 	//있으므로 판매자가 누구인지 아이디를 넣어줘야함
 	// 판매자 아이디(admin)
-	@ManyToOne // 판매자 한명이 여러개의 상품을 팔 수 있기 때문에 판매자 1 : 상품 N
-	@JoinColumn(name="admin_id")
+	//@ManyToOne // 판매자 한명이 여러개의 상품을 팔 수 있기 때문에 판매자 1 : 상품 N
+	//@JoinColumn(name="admin_id")
 	//private Admin admin;
 	
 	// 상품사진
