@@ -50,8 +50,8 @@ public class ItemService {
 		//업로드 된 이미지 파일을 지정된 경로에 저장하기 위해 설정
 		//transferTo 서버에 특정경로에 저장할 수 있도록 해주는 메서드
 		photoFile.transferTo(saveFile);
-		item.setPhotoName(photoName);
-		item.setPhtoPath("/img/"+photoPath);
+		item.setImgName(photoName);
+		item.setImgPath("/img/"+photoPath);
 		
 		//DB에 저장할 수 있도록 save
 		itemRepository.save(item);

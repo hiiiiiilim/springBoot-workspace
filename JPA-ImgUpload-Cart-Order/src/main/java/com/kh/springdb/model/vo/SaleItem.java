@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -24,6 +25,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+@Entity
 public class SaleItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "saleItem_seq")
@@ -52,7 +54,10 @@ public class SaleItem {
 	
 	//판매 상품에 매핑되는 주문 상품
 	@OneToOne(mappedBy = "saleItem")
-	private int isCancel;
+	private OrderItem  orderItem;
+	
+	//주문자가 주문 취소 여부 1: 판매취소 0: 판매완료
+		private int isCancel;
 	
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
 	private LocalDate createDate;//날짜
@@ -64,11 +69,25 @@ public class SaleItem {
 	
 	//상품 개별 주문
 	public static SaleItem createSaleItem(int itemId, Sale sale, User seller, Item item, int count) {
+		SaleItem saleItem = new SaleItem();
+		saleItem.setItemId(itemId);
+		saleItem.setSale(sale);
+		saleItem.setSeller(seller);
+		saleItem.setItemName(item.getName());
+		saleItem.setItemCount(count);
+		saleItem.setItemTotalPrice(item.getPrice()*count);
 		return saleItem;
 	}
 	
 	//상품 전체 주문 건 확인
 	public static SaleItem createSaleItem(int itemId, Sale sale, User seller, CartItem cartItem) {
+		SaleItem saleItem = new SaleItem();
+		saleItem.setItemId(itemId);
+		saleItem.setSale(sale);
+		saleItem.setSeller(seller);
+		saleItem.setItemName(cartItem.getItem().getName());
+		saleItem.setItemCount(cartItem.getItem().getPrice());
+		saleItem.setItemTotalPrice(cartItem.getItem().getPrice()*cartItem.getCount());
 		return saleItem;
 	}
 	
