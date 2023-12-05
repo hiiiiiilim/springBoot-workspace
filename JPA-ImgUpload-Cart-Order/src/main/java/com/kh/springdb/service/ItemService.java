@@ -1,10 +1,13 @@
 package com.kh.springdb.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.kh.springdb.model.vo.Item;
@@ -13,16 +16,21 @@ import com.kh.springdb.repository.ItemRepository;
 public class ItemService {
 	private ItemRepository itemRepository;
 	
+	@Autowired
+	public ItemService(ItemRepository itemRepository) {
+		this.itemRepository=itemRepository;
+	}
+	
 	//상품을 추가하고 삭제하고 수정하는 기능
-	public void addItem(Item item, MultipartFile photoFile) {
+	public void addItem(Item item, MultipartFile photoFile) throws IllegalStateException, IOException {
 		//상품명과 저장될 파일명 경로생성
 		//이미지 파일 정보에 대해서 추출
 		String originPhotoName = photoFile.getOriginalFilename(); //업로드 된 이미지 파일에 원본 파일명을 가져옴
-		String photoName = ""; //내
+		String photoName = ""; 
 		String photoPath = System.getProperty("user.dir")+"src/main/resorces/static/uploadimg/"; //업로드된 이미지 파일 경로 설정 
 		//System.getProperty():현재 코드가 작업하고 있는 폴더 위치
 		//				user.dir 현재 작업하고 있는 사용자 폴더를 나타냄
-		//user.dir은 C:\Users\user1\Desktop\springBoot-workspace\JPA-ImgUpload-Cart-Order 위치와 동일하다
+		//user.dir은 폴더경로 위치와 동일하다
 		
 		String saveFileName = "khShop_" + originPhotoName; //+랜덤으로 숫자를 넣어줘서 업로드 파일 이름이겹치지 않도록 할 수 있음
 		//saveFileName 으로 만약에 판매자가 사진1을 올리면 내 폴더 안에는 khShop_사진1로 저장이됨
@@ -42,7 +50,7 @@ public class ItemService {
 		//업로드 된 이미지 파일을 지정된 경로에 저장하기 위해 설정
 		//transferTo 서버에 특정경로에 저장할 수 있도록 해주는 메서드
 		photoFile.transferTo(saveFile);
-		item.setPhotoName(photoName)
+		item.setPhotoName(photoName);
 		item.setPhtoPath("/img/"+photoPath);
 		
 		//DB에 저장할 수 있도록 save
