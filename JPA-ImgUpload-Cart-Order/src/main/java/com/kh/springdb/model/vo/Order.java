@@ -43,7 +43,7 @@ public class Order {
 	private List<OrderItem> orderItems = new ArrayList<>();
 	
 	//구매 날짜 
-	@DateTimeFormat(pattern="yyyy-mm-dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate createDate;
 	
 	@PrePersist

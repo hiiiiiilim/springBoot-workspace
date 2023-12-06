@@ -42,9 +42,9 @@ public class Sale {
 	private int totalCount;
 	
 	//판매정보를 새로 생성하는 메서드
-	public static Sale createSale(User saller) {
+	public static Sale createSale(User seller) {
 		Sale sale = new Sale();
-		sale.setSeller(saller);
+		sale.setSeller(seller);
 		sale.setTotalCount(0);
 		return sale;
 	}
