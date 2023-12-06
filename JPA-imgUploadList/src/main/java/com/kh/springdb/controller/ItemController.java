@@ -44,12 +44,11 @@ public class ItemController {
 	//클라이언트가 등록한 상품 등록 내용을 디비에 로그인
 	@PostMapping("/item/new")
 	public String itemSave(Item item, MultipartFile imgFile) throws IllegalStateException, IOException {
-		if(item.getImgPath() !=null || item.getImgName() != null) {
+		System.out.println("item.getImgPath()"+item.getImgPath());
+		System.out.println("item.getImgName()"+item.getImgName());
+		System.out.println("imgFile"+imgFile);
+	
 			itemService.saveItem(item, imgFile);
-		}else {
-			itemService.saveItem(item, null);
-		}
-			
 		return "redirect:/item/list";
 	}
 	
