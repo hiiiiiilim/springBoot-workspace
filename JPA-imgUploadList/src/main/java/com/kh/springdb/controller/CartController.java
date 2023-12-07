@@ -6,7 +6,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.springdb.model.Cart;
 import com.kh.springdb.model.Item;
@@ -33,12 +35,7 @@ public class CartController {
 	}
 	
 	//주소를 접속하기 위해서
-	/**
-	 * @param itemId
-	 * @param model
-	 * @return
-	 */
-	@GetMapping("/add/{itemid}")
+	@GetMapping("/add/{itemId}")
 	public String addToCart(@PathVariable int itemId, Model model){
 		//장바구니에 상품추가
 		Item newItem = itemService.getItemById(itemId);
@@ -50,9 +47,17 @@ public class CartController {
 		//	int - java에서 기본 데이터 타입 정수를 나타내는 값임 null값을가질 수 없음.
 		
 		//임의의 값을 지정해줄때 1L이라는 표현을 쓰기도 함
-		cartService.addCart(4L, newItem, 1);
+		//Long a =3L
+		cartService.addCart(1L, newItem, 1);
 		return "redirect:/cart";
 		//1L이란?
-		
+	}
+	
+	@PostMapping("/add")
+	public String addToCartItem(@RequestParam("itemId") Long itemId, Model model) {
+		Item newItem = itemService.getItemById(itemId.intValue());
+		//1L 유저 아이디 값을 나타낸 것, 새로운 아이템 추가 1= 카트에 추가할 아이템 수량
+		cartService.addCart(1L, newItem, 1);
+		return "redirect:/cart";
 	}
 }

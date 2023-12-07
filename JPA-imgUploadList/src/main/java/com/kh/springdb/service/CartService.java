@@ -1,44 +1,41 @@
 package com.kh.springdb.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.kh.springdb.repository.CartItemRepository;
+import com.kh.springdb.repository.CartRepository;
+import com.kh.springdb.repository.ItemRepository;
+
+import jakarta.transaction.Transactional;
+
+import java.util.List;
 
 import com.kh.springdb.model.Cart;
 import com.kh.springdb.model.CartItem;
 import com.kh.springdb.model.Item;
-import com.kh.springdb.repository.CartItemRepository;
-import com.kh.springdb.repository.ItemRepository;
-
-import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
-
-
-
 @Service
 //@RequiredArgsConstructor
 public class CartService {
-  @Autowired
-  private CartItemRepository carItemRepository;
+    @Autowired
+    private CartItemRepository carItemRepository;
 
-  @Autowired
-  private ItemRepository itemRepository;
+    @Autowired
+    private ItemRepository itemRepository;
 
-  @Autowired
-  private CartRepository cartRepository;
+    @Autowired
+    private CartRepository cartRepository;
 
-  public List<CartItem> findCartItemByCartId(int cartId) {
-      return carItemRepository.findCartItemByItemId(cartId);
-  }
+    public List<CartItem> findCartItemByCartId(int cartId) {
+        return carItemRepository.findCartItemByItemId(cartId);
+    }
 
-  public List<CartItem> findByItemId(int itemId) {
-      return carItemRepository.findByItemId(itemId);
-  }
+    public List<CartItem> findByItemId(int itemId) {
+        return carItemRepository.findByItemId(itemId);
+    }
 
-  public Cart getCartById(Long cartId) {
-      return cartRepository.findById(cartId).orElse(null);
-  }
+    public Cart getCartById(Long cartId) {
+        return cartRepository.findById(cartId).orElse(null);
+    }
 
 	@Transactional
 	public void addCart(Long cartId, Item newItem, int amount) {
@@ -54,6 +51,7 @@ public class CartService {
 	    if (cartItem == null) {
 	        // 장바구니에 해당 아이템이 없으면 새로운 CartItem 생성
 	        cartItem = new CartItem();
+	        cartItem.setId(amount);
 	        cartItem.setCart(cart);
 	        cartItem.setItem(newItem);
 	        cartItem.setCount(amount);
@@ -71,3 +69,9 @@ public class CartService {
 	
 	
 }
+
+
+
+
+
+

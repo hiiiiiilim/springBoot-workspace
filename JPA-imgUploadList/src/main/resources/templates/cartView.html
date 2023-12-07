@@ -6,6 +6,7 @@
 </head>
 <body>
 	<h1>장바구니</h1>
+		<div th:if = "${cart !=null}">
 	<table>
 		<thead>
 			<tr>
@@ -40,5 +41,12 @@
 	<!--총 가격 총수량을 작성해주는 p태그-->
 	<p>총가격 :  <span th:text="${cart.totalAmount}"></span></p>
 	<p>총가격 :  <span th:text="${cart.totalCount}"></span></p>
+	
+
+		
+	</div>
+	<div th:unless="${cart !=null}">
+		<p>카트에 담긴 제품이 없습니다.</p>
+	</div>
 </body>
 </html>

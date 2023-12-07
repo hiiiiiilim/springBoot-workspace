@@ -1,4 +1,4 @@
-package com.kh.springdb.service;
+package com.kh.springdb.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
