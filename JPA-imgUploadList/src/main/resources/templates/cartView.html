@@ -30,6 +30,7 @@
 						로 지정해준 값을 가지고옴
 					}
 				-->
+				<td><img th:src="@{${cartItem.item.getImgPath()}}"></td>
 				<td th:text="${cartItem.item.name}"></td>
 				<td th:text="${cartItem.item.price}"></td>
 				<td th:text="${cartItem.count}"></td>
@@ -40,8 +41,20 @@
 	
 	<!--총 가격 총수량을 작성해주는 p태그-->
 	<p>총가격 :  <span th:text="${cart.totalAmount}"></span></p>
-	<p>총가격 :  <span th:text="${cart.totalCount}"></span></p>
+	<p>총수량 :  <span th:text="${cart.totalCount}"></span></p>
 	
+	<!--
+		param.checkoutStatus == 'success'
+	-->
+	<div th:if="${param.checkoutStatus == 'success'}">
+		<p>결제가 완료되었습니다.</p>
+	</div>
+	<div th:if="${param.checkoutStatus == 'empty'}">
+		<p>장바구니가 비어있습니다.</p>
+	</div>
+	<form action="/cart/checkout" method="post">
+		<button type="submit">결제하기</button>
+	</form>
 
 		
 	</div>
