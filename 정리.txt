@@ -22,3 +22,25 @@ public class Cart(int id, User user, int count, List<CartItem> cartItems, Locald
 
 @Transactional : 자동적으로 롤백이나 커밋을 진행해줌
 
+
+-----------------------
+Spring(JPA, myBatis) -> 프레임워크 : 틀이 정해져있음, 프레임워크안에서의 차이가 있음, myBatis는 개발자가 자유롭게 사용할 수 있음
+라이브러리: 개발자가 할 수 있는 범위가 넓음
+---------------------------------
+
+JPA 관계를 계속 체크해줘야됨
+
+-------------------------------
+cart = 유저 어떤유저의 장바구니
+cartItem = 장바구니 - 장바구니안에 들어있는 아이템
+
+order = 구매자(1,2,3,4,...10000)
+orderItem=어떤아이템을 구매했는가
+
+seller = 판매자(1,2,3,4,...,10000)
+sellerItem = 판매자가 각각 판매하고 싶은 아이템
+
+------------------------------------
+
+private boolean isCheckout; //true->판매중, false품절
+private int isSoldout //상품 상태(0:판매중/1:품절/2:일시중지 /3:10개씩 묶음판매)

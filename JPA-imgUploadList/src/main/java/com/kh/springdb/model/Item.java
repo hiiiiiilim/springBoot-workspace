@@ -41,6 +41,10 @@ public class Item {
 	private int stock;
 	//상품 품절 유무
 	private int isSoldout;
+	/*
+	 *private boolean isCheckout; //true->판매중, false품절
+		private int isSoldout //상품 상태(0:판매중/1:품절/2:일시중지 /3:10개씩 묶음판매) 
+	 * */
 	//이미지 업로드를 위한 파일 명, 이미지 경로, 상품등록 날짜
 	@Nullable
 	private String imgName;
