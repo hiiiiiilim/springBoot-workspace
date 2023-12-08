@@ -65,7 +65,7 @@ public class CartController {
 	//결제 완료 후 장바구니 삭제하기 위한 메서드 추가
 	@PostMapping("/checkout")
 	public String checkout(RedirectAttributes redirectAttribute) {
-		Long cartId = 1L;
+		Long cartId = 1L; //회원을 고정시킴, 유저와 연결 시 1L대신에 로그인한 유저값이 들어가야함,delete해도 해당 유저만 삭제됨
 		try {
 			cartService.checkout(cartId);
 			redirectAttribute.addFlashAttribute("checkoutStatus","success");

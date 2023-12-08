@@ -1,0 +1,24 @@
+스프링 시큐리티 -> 인증을 수행함, 새로운 비밀번호를 입력하라고함, 같은내용이 나오지 않음, 로그인을 하라고 권장함, 세션이 끝날때까지 유지됨
+코틀린 - 디버깅에 쉬움, 정적으로 이용
+그루비 - 간결하게 적음, 유동적으로 이용 
+
+----------
+
+@NoArgsConstuctor : 기본 생성자를 만들어줌
+public class Cart(){
+}
+
+@AllArgsConstuctor : 적은 필드 모두를 이용해서 생성자를 만들어줌
+public class Cart(int id, User user, int count, List<CartItem> cartItems, Localdata createDate){
+	this.id = id;
+	this.user = user;
+	this.count = count;
+	this.cartItems = cartItems;
+	this.createDate=createDate;
+}
+
+@Bulider : 객체가 훼손되지 않도록 잡아주는 역할,final
+객체를 불변하게 잡아주는 역할
+
+@Transactional : 자동적으로 롤백이나 커밋을 진행해줌
+

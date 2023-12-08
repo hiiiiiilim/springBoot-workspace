@@ -92,8 +92,8 @@ public class CartService {
 			orderRepository.save(order);
 			
 			//delete clear, 주문 후 장바구니를 비우겠다.
-			carItemRepository.deleteAll();
-			cart.getCartItems().clear();
+			carItemRepository.deleteAll(); //데이터베이스 삭제
+			cart.getCartItems().clear(); //배열,리스트나 set같은 컬렉션에서 리스트나 컬랙션을 초기화할 때 사용, 현재는 리스트를 사용하지 않아서 동작하지 않음  
 		
 			System.out.println("*"+cart);
 			cartRepository.save(cart);
