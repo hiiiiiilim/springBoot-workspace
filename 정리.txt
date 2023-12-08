@@ -2,27 +2,6 @@
 코틀린 - 디버깅에 쉬움, 정적으로 이용
 그루비 - 간결하게 적음, 유동적으로 이용 
 
-----------
-
-@NoArgsConstuctor : 기본 생성자를 만들어줌
-public class Cart(){
-}
-
-@AllArgsConstuctor : 적은 필드 모두를 이용해서 생성자를 만들어줌
-public class Cart(int id, User user, int count, List<CartItem> cartItems, Localdata createDate){
-	this.id = id;
-	this.user = user;
-	this.count = count;
-	this.cartItems = cartItems;
-	this.createDate=createDate;
-}
-
-@Bulider : 객체가 훼손되지 않도록 잡아주는 역할,final
-객체를 불변하게 잡아주는 역할
-
-@Transactional : 자동적으로 롤백이나 커밋을 진행해줌
-
-
 -----------------------
 Spring(JPA, myBatis) -> 프레임워크 : 틀이 정해져있음, 프레임워크안에서의 차이가 있음, myBatis는 개발자가 자유롭게 사용할 수 있음
 라이브러리: 개발자가 할 수 있는 범위가 넓음
@@ -44,3 +23,7 @@ sellerItem = 판매자가 각각 판매하고 싶은 아이템
 
 private boolean isCheckout; //true->판매중, false품절
 private int isSoldout //상품 상태(0:판매중/1:품절/2:일시중지 /3:10개씩 묶음판매)
+
+UUID uuid = UUID.ramdomUUID();
+
+UUID를 붙여줌으로 랜덤으로 숫자를 생성해서 파일명일 겹치지 않게 임의 숫자를 생성해줌
