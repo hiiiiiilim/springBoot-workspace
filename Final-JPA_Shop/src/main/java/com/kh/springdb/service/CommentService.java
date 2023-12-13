@@ -19,7 +19,7 @@ public class CommentService {
 	
 	//댓글 추가 메서드 작성
 	public Comment addComment(int productId, String content) {
-		Product product = productRepository.findById(productId).orElse(null);
+		 Product product = productRepository.findProductById(productId);
 	// 만약에 상품이 존재하지 않을 경우 
 		//댓글 또한 존재하지 않으므로 
 		// 댓글이 존재할 수 없음을 예외처리 함
@@ -32,7 +32,7 @@ public class CommentService {
 		comment.setProduct(product);
 		comment.setContent(content);
 		
-	return commentRepository.save(comment);
+		return commentRepository.save(comment);
 	}
 	
 }

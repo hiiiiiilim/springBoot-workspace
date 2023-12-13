@@ -54,7 +54,7 @@ public class Product {
         this.createDate = LocalDate.now();
     }
 	
-	
+	//제품에 대한 좋아요를 받고 싶다면 여기에 추천과 관련된 변수를 넣어줘도됨
 }
 
 

@@ -21,6 +21,7 @@ import org.springframework.data.domain.Page;
 @RequiredArgsConstructor
 public class ProductController {
 	private final ProductService productService;
+	private final CommentService commentService;
 	
 	@GetMapping("/")
 	public String mainPageView(Model model) {
@@ -82,14 +83,12 @@ public class ProductController {
 		return "product_detail";
 	}
 	
-	private CommentService commentSerivce;
+	
 	//댓글 작성하기 위한 postMapping
 	@PostMapping("/addComment")
-	public String addComment(@RequestParam int productId, 
-							@RequestParam String commentContent) {
-		commentSerivce.addComment(productId, commentContent);
+	public String addComment(@RequestParam(value="productId") int productId, @RequestParam(value="commentContent") String commentContent) {
+		commentService.addComment(productId, commentContent);
 		return "redirect:/product/detail/" + productId;
-		
 	}
 }
 

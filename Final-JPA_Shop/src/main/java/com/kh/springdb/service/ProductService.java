@@ -34,7 +34,7 @@ public class ProductService {
 		 int conPage = Math.max(0, page);
 		 Pageable pageable = PageRequest.of(conPage, 1);
 		  */
-		   Pageable pageable = PageRequest.of(page, 3, Sort.by("createDate").descending());
+		   Pageable pageable = PageRequest.of(page, 1, Sort.by("createDate").descending());
     		return productRepository.findAll(pageable);
 	}
 	
