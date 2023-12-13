@@ -18,14 +18,14 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 	private final UserService userService;
 	
-	//회원가입할 대 들어갈 창 조회
+	//회원가입할 때 들어갈 창 조회
 	@GetMapping("/signUp")
 	public String signUp(UserCheckForm userCheckForm) {
 		return "signup_form";
 	}
 	
 	//회원가입을 진행할 때 값이 존재하는지, 원하는 조건에 맞는지 확인 후 전달
-	@PostMapping("")
+	@PostMapping("/signUp")
 	public String signUp(@Valid UserCheckForm userCheckForm, BindingResult bindingResult) {
 		//1. 비밀번호와 비밀번호 확인이 일치하지 않을때
 		//bindingResult.rejectValue(a,b,c)
@@ -47,4 +47,6 @@ public class UserController {
 	public String login() {
 		return "login_form";
 	}
+	
+	
 }
