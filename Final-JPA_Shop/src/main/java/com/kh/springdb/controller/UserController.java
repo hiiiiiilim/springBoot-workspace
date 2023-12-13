@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 //공통으로 들어가는 url이 있다면 RequestMapping 사용해서 user로 묶어주기
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
 	private final UserService userService;
 	
@@ -34,17 +34,18 @@ public class UserController {
         }
 
 		//만약 패스워드 두개가 일치하지 않는다면 일치하지 않습니다!
-	      if (!userCreateForm.getPassword1().equals(userCreateForm.getPassword2())) {
-	            bindingResult.rejectValue("password2", "passwordInCorrect", 
-	                    "2개의 패스워드가 일치하지 않습니다.");
-	            return "signup_form";
-	        }
+        if (!userCreateForm.getPassword1().equals(userCreateForm.getPassword2())) {
+            bindingResult.rejectValue("password2", "passwordInCorrect", 
+                    "2개의 패스워드가 일치하지 않습니다.");
+            return "signup_form";
+        }
 		
 	    //html폼에서 선택한 역할을 가지고 오기 위해
 	     UserRole role = userCreateForm.getIsRole();
-	   userService.createUser(userCreateForm.getUsername(),userCreateForm.getEmail(), userCreateForm.getPassword1(),userCreateForm.getIsRole());
+	     userService.createUser(userCreateForm.getUsername(),userCreateForm.getEmail(), userCreateForm.getPassword1(),userCreateForm.getIsRole());
 		//userService.createUser(userCreateForm.getUsername(), 
           //      userCreateForm.getEmail(), userCreateForm.getPassword1());
+	    
 		
 		return "redirect:/";
 	}

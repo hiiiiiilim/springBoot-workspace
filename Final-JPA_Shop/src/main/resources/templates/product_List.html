@@ -21,6 +21,11 @@
             height: auto;
         }
     </style>
+    	<script>
+			function likeProduct(productId){
+				alert('좋아요를 눌렀습니다.'+productId)
+			}
+		</script>
 	</head>
 	<body>
 		<h1>productList</h1>
@@ -31,10 +36,10 @@
 		    <div th:if="${#authorization.expression('isAuthenticated()')}">
 		    	<p th:text="'안녕하세요, ' + ${#authentication.name} + '님 환영합니다.'"></p>
 		    </div>
-			<a th:href="@{/product/list}">상품리스트로 이동</a>
+			<a th:href="@{/list}">상품리스트로 이동</a>
 		</div>
 		
-			<a th:href="@{/product/new}">상품추가하기</a>
+			<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/product/new}">상품추가하기</a>
 	<!-- 1 -->	<div class="product-container" th:each="product, loop : ${paging.content}">
 			    	<div class="product-item">
 				    	<div th:if="${product.imgName != null and product.imgPath != null}">		
@@ -49,6 +54,12 @@
 						
 						<label>제품 가격 : </label>
 						<span th:text="${product.price}"></span>
+						
+						<button th:if="${#authorization.expression('isAuthenticated()')}"
+							th:onclick="'likeProduct('+${product.id}+ ' )"
+						type="button">좋아요</button>
+						<span th:text="${product.likes}">likes</span>
+					
 						<a th:href="@{'/product/detail/' + ${product.id}}">상세보기</a>
 						
 						

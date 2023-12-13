@@ -90,6 +90,12 @@ public class ProductController {
 		commentService.addComment(productId, commentContent);
 		return "redirect:/product/detail/" + productId;
 	}
+	
+	//like한 내용 받아줄 수 있게 postmapping을 넣어줌
+//	public String likeProduct(/*추가로 나중에 변수 값 넣어줄 것*/) {
+//		productService.likeProduct(/*추후 아이디 값이나 like를 넣어줄 수 있는 변수값 넣어줄 예정*/);
+//		return "redirect:/list";
+//	}
 }
 
 
