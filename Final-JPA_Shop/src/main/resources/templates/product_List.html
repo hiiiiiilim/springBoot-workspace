@@ -21,11 +21,11 @@
             height: auto;
         }
     </style>
-    	<script>
+    	<!--<script>
 			function likeProduct(productId){
 				alert('좋아요를 눌렀습니다.'+productId)
 			}
-		</script>
+		</script>-->
 	</head>
 	<body>
 		<h1>productList</h1>
@@ -55,10 +55,10 @@
 						<label>제품 가격 : </label>
 						<span th:text="${product.price}"></span>
 						
-						<button th:if="${#authorization.expression('isAuthenticated()')}"
+						<!--<button th:if="${#authorization.expression('isAuthenticated()')}"
 							th:onclick="'likeProduct('+${product.id}+ ' )"
 						type="button">좋아요</button>
-						<span th:text="${product.likes}">likes</span>
+						<span th:text="${product.likes}">likes</span>-->
 					
 						<a th:href="@{'/product/detail/' + ${product.id}}">상세보기</a>
 						

@@ -59,13 +59,13 @@ public class ProductService {
 	}
 	
 	//제품에 좋아요를 받을 수 있도록 서비스 만들어줌
-	public void likeProduct(int productId) {
-		Product product = productRepository.findById(productId).orElse(null);
-		if(product != null) {
-			product.setLikes(product.getLikes()+1);
-			productRepository.save(product);
-		}
-	}
+//	public void likeProduct(int productId) {
+//		Product product = productRepository.findById(productId).orElse(null);
+//		if(product != null) {
+//			product.setLikes(product.getLikes()+1);
+//			productRepository.save(product);
+//		}
+//	}
 }
 
 
